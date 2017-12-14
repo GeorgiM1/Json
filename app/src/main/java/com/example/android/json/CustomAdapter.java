@@ -25,13 +25,16 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHoldee
     Context context;
 
     List<Image> imageList = new ArrayList<>();
+    OnRecycleviewImageClickListener onRecycleviewImageClickListener;
 
     public void setItems(List<Image> images) {
         imageList =  images;
+        notifyDataSetChanged();
     }
 
-    public CustomAdapter(Context _context) {
+    public CustomAdapter(Context _context, OnRecycleviewImageClickListener onRecycleviewImageClickListener1) {
         context = _context;
+        onRecycleviewImageClickListener = onRecycleviewImageClickListener1;
     }
 
     @Override
@@ -50,9 +53,15 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHoldee
     @Override
     public void onBindViewHolder(ViewHoldeer holder, int position) {
         // Get the data model based on position
-        Image image = imageList.get(position);
-//        holder.textView.setText(image.getTags());
-        Picasso.with(context).load(image.getWebFormatUrl()).centerCrop().fit().into(holder.imageView);
+        final Image image = imageList.get(position);
+        holder.textView.setText(image.getTags());
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onRecycleviewImageClickListener.onRowClick(image);
+            }
+        });
+        Picasso.with(context).load(image.getPreviewURL()).centerCrop().fit().into(holder.imageView);
 
     }
 

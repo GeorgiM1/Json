@@ -9,7 +9,8 @@ public class Image {
     public String favourites;
     public String tags;
     public String pageUrl;
-    public String previewUrl;
+
+    public String previewURL;
     public String webFormatUrl;
     public String userImageUrl;
 
@@ -49,12 +50,12 @@ public class Image {
         this.pageUrl = pageUrl;
     }
 
-    public String getPreviewUrl() {
-        return previewUrl;
+    public String getPreviewURL() {
+        return previewURL;
     }
 
-    public void setPreviewUrl(String previewUrl) {
-        this.previewUrl = previewUrl;
+    public void setPreviewURL(String previewURL) {
+        this.previewURL = previewURL;
     }
 
     public String getWebFormatUrl() {
