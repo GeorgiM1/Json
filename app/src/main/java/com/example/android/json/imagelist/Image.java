@@ -1,15 +1,16 @@
 package com.example.android.json.imagelist;
 
+import java.io.Serializable;
+
 /**
  * Created by pc on 12/14/2017.
  */
 
-public class Image {
+public class Image implements Serializable {
     public String likes;
     public String favourites;
     public String tags;
     public String pageUrl;
-
     public String previewURL;
     public String webFormatUrl;
     public String userImageUrl;

@@ -1,11 +1,13 @@
 package com.example.android.json;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
+import com.example.android.json.imagelist.Fragments.Main2Activity;
 import com.example.android.json.imagelist.Image;
 import com.example.android.json.imagelist.ImageModel;
 import com.google.gson.Gson;
@@ -29,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
         adapter = new CustomAdapter(this, new OnRecycleviewImageClickListener() {
             @Override
             public void onRowClick(Image image) {
+                Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+                startActivity(intent);
+
+
                 Toast.makeText(MainActivity.this, image.getTags(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -44,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    ArrayList<Image> getList(){
+  public   ArrayList<Image> getList(){
     String imagesJson = "{\n" +
             "    \"totalHits\":500,\n" +
             "    \"hits\":[\n" +
